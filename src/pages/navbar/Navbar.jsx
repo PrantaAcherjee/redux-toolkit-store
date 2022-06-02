@@ -7,7 +7,7 @@ const Navbar = () => {
   const items=useSelector(state=>state.cart)
   return (
     <div className='navigation'>
-        <span>Redux Store</span>
+        <span>E-My Shop</span>
         <div className='link'>
         <Link to='/'>Home</Link>
         <Link to='/cart'>Cart</Link>

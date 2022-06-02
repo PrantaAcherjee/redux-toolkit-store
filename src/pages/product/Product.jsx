@@ -1,21 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../store/cartSlice';
+import { fetchProducts, STATUSES } from '../../store/productSlice';
 import "./Product.css";
 
 const Product = () => {
-  const [products,setProducts]=useState([]);
-  useEffect(()=>{
-    const fetchProducts=async()=>{
-      const res=await fetch('https://fakestoreapi.com/products');
-      const data=await res.json();
-      console.log(data)
-      setProducts(data)
-    }
-    fetchProducts()
-  },[])
 
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
+  const {data:products,status}=useSelector(state=>state.product)
+  
+  // const [products,setProducts]=useState([]);
+
+  useEffect(()=>{
+  dispatch(fetchProducts())
+    // const fetchProducts=async()=>{
+    //   const res=await fetch('https://fakestoreapi.com/products');
+    //   const data=await res.json();
+    //   console.log(data)
+    //   setProducts(data)
+    // }
+    // fetchProducts()
+  },[])
+  if(status===STATUSES.LOADING){
+    return <h4>Loading...</h4>
+  }
+  else if(status===STATUSES.ERROR){
+    return <h4>Something went wrong !</h4>
+  }
+  
   const handleOnClick=(product)=>{
     dispatch(add(product))
   }
