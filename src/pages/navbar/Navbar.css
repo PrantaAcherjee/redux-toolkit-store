@@ -1,0 +1,11 @@
+.navigation{
+display: flex;
+justify-content: space-around;
+align-items: center;
+font-size: 18px;
+font-weight: 700;
+}
+.link a,span{
+padding-left: 4rem;
+text-decoration: none;
+}

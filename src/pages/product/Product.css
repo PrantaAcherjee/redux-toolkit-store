@@ -1,0 +1,16 @@
+.grid-container{
+margin: 2rem;
+display: grid;
+grid-template-columns: auto auto auto;
+justify-content: center;
+align-items: center;
+}
+.card{
+padding: 4rem;
+}
+
+.images{
+  
+ height: 200px;
+ object-fit: cover;
+}
